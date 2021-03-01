@@ -94,6 +94,6 @@ export default {
 <style scoped>
 .project-section {
   color: #fff;
-  background: #1d4596;
+  background: #1196f3;
 }
 </style>

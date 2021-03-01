@@ -2,6 +2,7 @@
   <v-app>
     <v-navigation-drawer
         dark
+        fixed
         src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
         permanent
     >
@@ -30,6 +31,7 @@
             v-for="item in items"
             :key="item.title"
             link
+            :to="`#${item.title.toLowerCase()}`"
         >
           <v-list-item-icon>
             <v-icon>{{ item.icon }}</v-icon>
@@ -56,7 +58,7 @@ export default {
     return {
       items: [
         {title: 'About', icon: 'mdi-account-box'},
-        {title: 'Projects', icon: 'mdi-apps'},
+        {title: 'Project', icon: 'mdi-apps'},
         {title: 'Education', icon: 'mdi-school-outline'},
         {title: 'Contact', icon: 'mdi-message-text-outline'},
       ],
@@ -75,11 +77,16 @@ siteName
 </static-query>
 
 <style>
+html {
+  scroll-behavior: smooth;
+}
+
 .v-application--wrap {
   flex-direction: row;
 }
 
 .v-main {
-  flex: 1 0
+  flex: 1 0;
+  margin-left: 256px;
 }
 </style>
