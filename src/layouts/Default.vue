@@ -1,6 +1,7 @@
 <template>
-  <v-app>
+  <v-app drak>
     <v-navigation-drawer
+        v-if="drawShow"
         dark
         fixed
         src="https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg"
@@ -8,7 +9,7 @@
     >
       <v-list-item>
         <v-list-item-avatar>
-          <img src="https://randomuser.me/api/portraits/women/81.jpg">
+          <img src="https://avatars.githubusercontent.com/u/46031285?s=460&v=4">
         </v-list-item-avatar>
 
         <v-list-item-content>
@@ -21,12 +22,9 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-divider></v-divider>
+      <v-divider/>
 
-      <v-list
-          dense
-          nav
-      >
+      <v-list dense nav>
         <v-list-item
             v-for="item in items"
             :key="item.title"
@@ -43,28 +41,39 @@
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
-    <v-main>
+
+    <!-- page content -->
+    <v-main v-bind:style="[drawShow ? {'margin-left': '256px'} : {'margin-left': '0px'}]">
+      <v-app-bar dense>
+        <div class="app-bar">
+          <v-app-bar-nav-icon @click="toggleDrawer"></v-app-bar-nav-icon>
+          <p>Suho Vincent Kang</p>
+        </div>
+      </v-app-bar>
       <slot/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-// import { mdiAccountBox } from '@mdi/js';
-
 
 export default {
-  data() {
-    return {
-      items: [
-        {title: 'About', icon: 'mdi-account-box'},
-        {title: 'Project', icon: 'mdi-apps'},
-        {title: 'Education', icon: 'mdi-school-outline'},
-        {title: 'Contact', icon: 'mdi-message-text-outline'},
-      ],
-      right: null,
+  data: () => ({
+    drawShow: true,
+    items: [
+      {title: 'About', icon: 'mdi-account-box'},
+      {title: 'Project', icon: 'mdi-apps'},
+      {title: 'Education', icon: 'mdi-school-outline'},
+      {title: 'Contact', icon: 'mdi-message-text-outline'},
+    ],
+    right: null,
+  }),
+  methods: {
+    toggleDrawer: function () {
+      this.drawShow = !this.drawShow
     }
-  },
+  }
+
 }
 </script>
 
@@ -85,8 +94,17 @@ html {
   flex-direction: row;
 }
 
-.v-main {
+.main-container {
   flex: 1 0;
   margin-left: 256px;
+}
+
+.app-bar {
+  display: flex;
+  align-items: center
+}
+
+.app-bar p {
+  margin-bottom: 0;
 }
 </style>
