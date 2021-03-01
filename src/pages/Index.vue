@@ -1,25 +1,27 @@
 <template>
   <Layout>
-    <section class="d-flex">
-      <v-container>
-        <v-row>
-          <v-col sm="6">
-            <g-image alt="Example image" src="~/vince.jpg" width="400"/>
-          </v-col>
-          <v-col sm="6">
-            <h1>Hi, This is Suho Kang / Vincent</h1>
-            <p>I am a software developer</p>
-          </v-col>
-        </v-row>
-      </v-container>
-    </section>
+    <About />
+    <Project />
+    <Education />
+    <Contact />
   </Layout>
 </template>
 
 <script>
+import About from "@/components/About"
+import Project from "@/components/Project"
+import Education from "@/components/Education"
+import Contact from "@/components/Contact"
+
 export default {
   metaInfo: {
-    title: 'Hello, world!'
+    title: 'Suho Kang'
+  },
+  components: {
+    About,
+    Project,
+    Education,
+    Contact
   }
 }
 </script>
