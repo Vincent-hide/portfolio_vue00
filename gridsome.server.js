@@ -6,11 +6,12 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = function (api) {
+  // comment this block of code before running 'yarn build' 
   api.chainWebpack((config, { isServer }) => {
     if (isServer) {
       config.externals([
         nodeExternals({
-          allowlist: [/^vuetify/]
+          whitelist: [/^vuetify/]
         })
       ])
     }
